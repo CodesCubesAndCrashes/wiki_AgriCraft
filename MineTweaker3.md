@@ -52,3 +52,23 @@ Import: `import mods.agricraft.SeedMutation`
 
     SeedMutation.remove(<minecraft:pumpkin_seeds>);
     SeedMutation.add(<minecraft:pumpkin_seeds>, <minecraft:melon_seeds>, <minecraft:wheat_seeds>);
+
+
+## Seed blacklist
+
+Seeds on the blacklist can **not** be planted on crops.
+
+Import: `import mods.agricraft.SeedBlacklist`
+
+### Provided methods
+
+- `add(IItemStack seed)`
+- `add(IItemStack[] seeds)`
+- `remove(IItemStack seed)`
+- `remove(IItemStack[] seeds)`
+
+### Example
+
+    import mods.agricraft.SeedBlacklist;
+
+    SeedBlacklist.add([<minecraft:pumpkin_seeds>, <minecraft:melon_seeds>]);
