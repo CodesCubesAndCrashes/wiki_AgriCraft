@@ -11,9 +11,9 @@ Import: `import mods.agricraft.CustomWood`
 
 ### Provided methods 
 
-- remove(IItemStack)
-- addShaped(IItemStack, IItemStack[][])
-- addShapeless(IItemStack, IItemStack[])
+- `remove(IItemStack result)`: Removes all recipes for crafting `result`
+- `addShaped(IItemStack result, IItemStack[][] inputs)`
+- `addShapeless(IItemStack result, IItemStack[] inputs)`
 
 ### Example
 
@@ -45,3 +45,10 @@ Import: `import mods.agricraft.SeedMutation`
     - `id` can either be `1` or `2`. 
     - An `id` of `1` specifies that `block` must be **below** the resulting crop
     - An `id` of `2` specifies that `block` must be **nearby**.
+
+### Example
+
+    import mods.agricraft.SeedMutation;
+
+    SeedMutation.remove(<minecraft:pumpkin_seeds>);
+    SeedMutation.add(<minecraft:pumpkin_seeds>, <minecraft:melon_seeds>, <minecraft:wheat_seeds>);
