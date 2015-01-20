@@ -95,6 +95,6 @@ The spread chance of individual seeds can be overwritten. The spread chance deno
 
 Import: `import mods.agricraft.SpreadChance`
 
-## Provided methods
+### Provided methods
 
 - `override(IItemStack seed, int chance)`: Chance has to be between `0` and `100` inclusive.
