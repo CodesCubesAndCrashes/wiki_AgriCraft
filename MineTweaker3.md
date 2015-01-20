@@ -87,3 +87,14 @@ Import: `import mods.agricraft.SoilWhitelist`
 - `add(IItemStack[] soils)`
 - `remove(IItemStack soil)`
 - `remove(IItemStack[] soils)`
+
+
+## Spread chance
+
+The spread chance of individual seeds can be overwritten. The spread chance denotes the probability that a fully grown fruit will spread to an adjecent cross-breed crop.
+
+Import: `import mods.agricraft.SpreadChance`
+
+## Provided methods
+
+- `override(IItemStack seed, int chance)`: Chance has to be between `0` and `100` inclusive.
