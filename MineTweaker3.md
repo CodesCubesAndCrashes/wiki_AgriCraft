@@ -56,7 +56,8 @@ Import: `import mods.agricraft.SeedMutation`
 
 ## Seed blacklist
 
-Seeds on the blacklist can **not** be planted on crops.
+Seeds on the blacklist can **not** be planted on crops. Make sure that all provided method arguments 
+are of type `ItemSeeds`.
 
 Import: `import mods.agricraft.SeedBlacklist`
 
@@ -72,3 +73,17 @@ Import: `import mods.agricraft.SeedBlacklist`
     import mods.agricraft.SeedBlacklist;
 
     SeedBlacklist.add([<minecraft:pumpkin_seeds>, <minecraft:melon_seeds>]);
+
+## Soil whitelist
+
+Soils on the whitelist allow that crop sticks can be planted on them. Make sure that all provided
+method arguments are of type `ItemBlock`.
+
+Import: `import mods.agricraft.SoilWhitelist`
+
+### Provided methods
+
+- `add(IItemStack soil)`
+- `add(IItemStack[] soils)`
+- `remove(IItemStack soil)`
+- `remove(IItemStack[] soils)`
