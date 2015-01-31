@@ -98,3 +98,15 @@ Import: `import mods.agricraft.SpreadChance`
 ### Provided methods
 
 - `override(IItemStack seed, int chance)`: Chance has to be between `0` and `100` inclusive.
+
+
+## Custom crop fruits
+
+You can change the fruits dropped by custom crops by adding/removing drops
+
+Import: `import mods.agricraft.CropProduct`
+
+### Provided methods
+
+- `add(IItemStack seed, IItemStack fruit, int weight)`: seed is the seed corresponding to the crop, weight has to be higher than zero, else the default value of 10 will be used
+- `remove(IItemStack seed, IItemStack fruit)
