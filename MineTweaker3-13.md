@@ -1,0 +1,152 @@
+# MineTweaker3 integration
+
+Documents all the methods provided by AgriCraft. For feature requests create an issue or head over to the FTB thread.
+
+
+## CustomWood recipes
+
+CustomWood recipes are the recipes for the Channel, Tank and Valve. These are like vanilla recipes with the only difference that for each plank type a seperate recipe is created.
+
+Import: `import mods.agricraft.CustomWood`
+
+### Provided methods 
+
+- `remove(IItemStack result)`: Removes all recipes for crafting `result`
+- `addShaped(IItemStack result, IItemStack[][] inputs)`
+- `addShapeless(IItemStack result, IItemStack[] inputs)`
+
+### Example
+
+    import mods.agricraft.CustomWood;
+
+    CustomWood.remove(<AgriCraft:waterChannel>);
+    CustomWood.addShaped(<AgriCraft:waterChannel>,
+        [[<minecraft:planks>, null, <minecraft:planks>],
+        [null, null, null],
+        [null, <minecraft:planks>, null]]);
+
+    CustomWood.remove(<AgriCraft:channelValve>);
+    CustomWood.addShapeless(<AgriCraft:channelValve>,
+        [<AgriCraft:waterChannel>, <AgriCraft:waterChannel>, <minecraft:stick>])
+
+This example will change the recipe for all Channel and Valve versions. Note that the `<minecraft:planks>` in the shaped recipe and the `<AgriCraft:waterChannel>` in the shapeless recipe, will get replaced with the "correct" instance for all the recipes.
+
+## Seed Mutations
+
+Seed mutations are of the general form `<result> = <parent1> + <parent2>`. Additional parameters can further refine the mutation. Not all possibilities are exposed via MineTweaker (yet).
+
+Import: `import mods.agricraft.SeedMutation`
+
+### Provided methods
+
+- `remove(IItemStack result)`: Removes all mutations where `<result>` is the result of the mutation.
+- `add(IItemStack result, IItemStack parent1, IItemStack parent2)`
+- `add(IItemStack result, IItemStack parent1, IItemStack parent2, int id, IItemStack block)`:
+    - `id` can either be `1` or `2`. 
+    - An `id` of `1` specifies that `block` must be **below** the resulting crop
+    - An `id` of `2` specifies that `block` must be **nearby**.
+
+### Example
+
+    import mods.agricraft.SeedMutation;
+
+    SeedMutation.remove(<minecraft:pumpkin_seeds>);
+    SeedMutation.add(<minecraft:pumpkin_seeds>, <minecraft:melon_seeds>, <minecraft:wheat_seeds>);
+
+
+## Seed blacklist
+
+Seeds on the blacklist can **not** be planted on crops. Make sure that all provided method arguments 
+are of type `ItemSeeds`.
+
+Import: `import mods.agricraft.SeedBlacklist`
+
+### Provided methods
+
+- `add(IItemStack seed)`
+- `add(IItemStack[] seeds)`
+- `remove(IItemStack seed)`
+- `remove(IItemStack[] seeds)`
+
+### Example
+
+    import mods.agricraft.SeedBlacklist;
+
+    SeedBlacklist.add([<minecraft:pumpkin_seeds>, <minecraft:melon_seeds>]);
+
+## Spread chance
+
+The spread chance of individual seeds can be overwritten. The spread chance denotes the probability that a fully grown fruit will spread to an adjecent cross-breed crop.
+
+Import: `import mods.agricraft.SpreadChance`
+
+### Provided methods
+
+- `override(IItemStack seed, int chance)`: Chance has to be between `0` and `100` inclusive.
+
+
+## Custom crop fruits
+
+You can change the fruits dropped by custom crops by adding/removing drops
+
+Import: `import mods.agricraft.CropProduct`
+
+### Provided methods
+
+- `add(IItemStack seed, IItemStack fruit, int weight)`: seed is the seed corresponding to the crop, weight has to be higher than zero, else the default value of 10 will be used
+- `remove(IItemStack seed, IItemStack fruit)
+
+# Growth requirements
+
+This section contains all the available configuration objects which modify growth requirements
+
+## Fertile soils
+
+Fertile soils are the default soils if no custom soil is specified. Make sure that all provided
+method arguments are of type `ItemBlock`.
+
+Import: `import mods.agricraft.growing.FertileSoils`
+
+### Provided methods
+
+- `add(IItemStack soil)`
+- `add(IItemStack[] soils)`
+- `remove(IItemStack soil)`
+- `remove(IItemStack[] soils)`
+
+
+## Soil
+
+Allows to define a specific soil for a specific plant. This mechanism is used by default to restrict sugarcane and cactus to sand.
+
+Import: `import mods.agricraft.growing.Soil`
+
+### Provided methods
+
+- `set(IItemStack seed, IItemStack soil)`
+- `clear(IItemStack seed)`: Removes the specific soil requirement. Seed can be planted on all fertile soils.
+
+
+## Brightness
+
+Allows to define the light levels at which the plant can grow. The user has to specify an interval for this setting: [a, b[ where 0 <= a <= b < 16. (Note that the lower bound is inclusive and the upper bound exclusive)
+
+Import: `import mods.agricraft.growing.Brightness`
+
+### Provided methods
+
+- `set(IItemStack seed, int min, int max)`
+
+
+## BaseBlock
+
+The base block is a block that has to be either **below** or **nearby** (range 4) of the soil where the seed is planted on.
+
+Import: `import mods.agricraft.growing.BaseBlock`
+
+### Provided methods
+
+- `set(IItemStack seed, IItemStack base, int type, boolean baseBlockOreDicted)`
+    - `type` is either `1` (BELOW) or `2` (NEARBY)
+    - `baseBlockOreDicted` should be `true` if every block with the same ore dict should fulfill the requirement, `false` otherwise
+- `clear(IItemStack seed)`: Removes the requirement of a base block from the seed
