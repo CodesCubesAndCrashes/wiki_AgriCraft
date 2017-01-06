@@ -12,7 +12,7 @@ This page will serve as a guide to using this awesome new feature of AgriCraft!
   "id": "", # The unique string id for the plant.
   "plant_name": "", # The name of the plant. This does not need to be unique.
   "seed_name": "", # The name of the auto-generated seed for the plant. This will not be used if a valid seed item is defined.
-  "seed_items": [ # An array containing the string representations of predefined seed items.
+  "seed_items": [ # An array containing the seed items that map to this plant.
     {
       "item": "minecraft:wheat_seeds",
       "meta": 0,
