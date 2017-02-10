@@ -1,6 +1,6 @@
 - [[Home|Home]]
 
-- [[JSON Customization|AgriJSON]]
+- [[Customization|AgriJSON]]
   - [[Plants|AgriPlants]]
   - [[Soils|AgriSoils]]
   - [[Mutations|AgriMutaions]]
