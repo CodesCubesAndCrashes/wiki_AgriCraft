@@ -1,0 +1,7 @@
+- Home
+  - [[JSON Customization|AgriJSON]]
+    - [[Plants|AgriPlants]]
+    - [[Soils|AgriSoils]]
+    - [[Mutations|AgriMutaions]]
+  - Legacy
+    - [[Minetweaker]]
