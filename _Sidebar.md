@@ -4,4 +4,5 @@
   - [[Soils|AgriSoils]]
   - [[Mutations|AgriMutaions]]
 - Legacy
-  - [[Minetweaker]]
+  - [[[1.2.*] MineTweaker3|[1.2.*] MineTweaker3]]
+  - [[[1.3.*] MineTweaker3|[1.3.*] MineTweaker3]]
