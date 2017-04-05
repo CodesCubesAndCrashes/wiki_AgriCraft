@@ -59,7 +59,9 @@ The JSON file may be located in any folder under the `config\agricraft\json\defa
     "max_light": 16, # The max integer light value that the plant can grow in [max: 16].
     "soils": [], # Array containing string ids for AgriSoils that are considered valid for this plant.
     "bases": [], # Array containing string representations of the blocks that must be below the soil block.
-    "nearby": {} # Array containing string representations of the blocks that must be near the plant.
+    "nearby": { # Array containing string representations of the blocks that must be near the plant.
+      "<mod_id>:<block_id>": <radius> # A generic nearby block entry, describing the block and the radius within it may be placed.
+    }
   },
   "texture": {
     "render_type": "", # Can be either "cross", "hash", or "stem". This determines the method used to render the plant.
