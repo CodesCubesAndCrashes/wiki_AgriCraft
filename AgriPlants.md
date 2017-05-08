@@ -58,10 +58,23 @@ The JSON file may be located in any folder under the `config\agricraft\json\defa
     "min_light": 10, # The min integer light value that the plant can grow in [min: 0].
     "max_light": 16, # The max integer light value that the plant can grow in [max: 16].
     "soils": [], # Array containing string ids for AgriSoils that are considered valid for this plant.
-    "bases": [], # Array containing string representations of the blocks that must be below the soil block.
-    "nearby": { # Array containing string representations of the blocks that must be near the plant.
-      "<mod_id>:<block_id>": <radius> # A generic nearby block entry, describing the block and the radius within it may be placed.
-    }
+    "conditions": [ # Array containing all the growth requirement conditions to be met.
+      {
+        "amount": 1,  # The amount required in the given range.
+        "min_x": 0,   # The bounding box, relative to the crop at 0, 0, 0 in which the block(s) are to be placed.
+        "min_y": -2,  # In this case we specify the box {(0, -2, 0), (0, -2, 0)}, which is the single block directly
+        "min_z": 0,   # below the soil block. Notice that the upper bound is inclusive, so that to specify a
+        "max_x": 0,   # single block we use the same point twice, not the upper left and lower right points.
+        "max_y": -2,
+        "max_z": 0, 
+        "item": "minecraft:gold_ore", # This part specifies information about the block required.
+        "meta": 0, # This is a *direct* extension of an AgriStack meaning that it has all the same fields as
+        "tags": "", # would be found on say the seed_items field.
+        "ignoreMeta": true,
+        "ignoreTags": [],
+        "useOreDict": true
+      }
+    ]
   },
   "texture": {
     "render_type": "", # Can be either "cross", "hash", or "stem". This determines the method used to render the plant.
