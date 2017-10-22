@@ -1,5 +1,11 @@
 - [[Home|Home]]
 
+- [[FAQ|FAQ]]
+
+- [[Known Issues|KnownIssues]]
+
+- [[Roadmap|Roadmap]]
+
 - [[Customization|AgriJSON]]
   - [[Plants|AgriPlants]]
   - [[Soils|AgriSoils]]
